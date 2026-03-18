@@ -1,0 +1,305 @@
+/* =========================================
+   1. VARIABLES Y CONFIGURACIÓN BASE
+   ========================================= */
+:root {
+    --primary: #2563eb;    /* Azul Institucional */
+    --primary-light: #e0f2fe;
+    --dark: #0f172a;       /* Fondo Header/Texto fuerte */
+    --light: #f8fafc;      /* Fondo General */
+    --text: #334155;       /* Texto Cuerpo */
+    --text-muted: #64748b; /* Texto Secundario */
+    --accent: #e2e8f0;     /* Bordes y Líneas */
+    --white: #ffffff;
+    
+    /* Colores de Marca */
+    --c-gmail: #ea4335;
+    --c-linkedin: #0077b5;
+    --c-github: #ffffff;
+}
+
+* {
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    color: var(--text);
+    background-color: var(--light);
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 850px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+/* =========================================
+   2. HEADER Y CONTACTO (ICONOS)
+   ========================================= */
+header {
+    background: var(--dark);
+    color: var(--white);
+    text-align: center;
+    padding: 4rem 1rem;
+    margin-bottom: 2rem;
+}
+
+header h1 { 
+    margin: 0; 
+    font-size: 2.8rem; 
+    font-weight: 700; 
+    letter-spacing: -1px;
+}
+
+.subtitle { 
+    color: #94a3b8; 
+    font-size: 1.1rem; 
+    margin-top: 10px; 
+    font-weight: 400;
+}
+
+.contact-icons {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.contact-icons a {
+    color: #94a3b8;
+    font-size: 2rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.contact-icons a:hover {
+    transform: translateY(-4px);
+}
+
+.contact-icons a:hover .fa-envelope { color: var(--c-gmail); }
+.contact-icons a:hover .fa-linkedin { color: var(--c-linkedin); }
+.contact-icons a:hover .fa-github { color: var(--c-github); }
+
+/* =========================================
+   3. SECCIONES GENERALES
+   ========================================= */
+section {
+    margin-bottom: 4rem;
+}
+
+h2 {
+    border-bottom: 3px solid var(--primary);
+    display: inline-block;
+    padding-bottom: 5px;
+    margin-bottom: 1.5rem;
+    color: var(--dark);
+    font-size: 1.6rem;
+}
+
+/* =========================================
+   4. EXPERIENCIA (TARJETAS DESPLEGABLES)
+   ========================================= */
+.exp-card {
+    background: var(--white);
+    border-radius: 12px;
+    margin-bottom: 1.2rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--accent);
+    overflow: hidden;
+    transition: border-color 0.3s ease;
+}
+
+.exp-card:hover { border-color: var(--primary); }
+
+summary {
+    list-style: none;
+    cursor: pointer;
+    padding: 1.5rem;
+}
+
+summary::-webkit-details-marker { display: none; }
+
+.summary-content {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+}
+
+.mini-logo {
+    width: 55px;
+    height: 55px;
+    object-fit: contain;
+    border-radius: 8px;
+    background: #f1f5f9;
+    padding: 4px;
+}
+
+.summary-text h3 { margin: 0; font-size: 1.2rem; color: var(--dark); }
+.location { font-size: 0.85rem; color: var(--text-muted); }
+
+.exp-details {
+    padding: 0 1.5rem 1.5rem 6.2rem; /* Alineado con el inicio del texto del summary */
+    border-top: 1px solid #f1f5f9;
+    padding-top: 1rem;
+}
+
+.date { font-weight: 700; color: var(--primary); font-size: 0.9rem; display: block; margin-bottom: 8px; }
+
+.icon-arrow { 
+    transition: transform 0.3s ease; 
+    font-size: 0.8rem; 
+    color: var(--text-muted);
+    margin-left: auto;
+}
+
+details[open] .icon-arrow { transform: rotate(180deg); color: var(--primary); }
+
+/* Experiencia Complementaria */
+.other-experience {
+    margin-top: 3rem;
+    padding: 2rem;
+    background: #f1f5f9;
+    border-radius: 15px;
+}
+
+.other-experience h3 { margin: 0 0 15px 0; color: var(--text); font-size: 1.2rem; }
+
+.small-card {
+    background: var(--white);
+    padding: 1.2rem;
+    margin-bottom: 1rem;
+    border-radius: 10px;
+    border-left: 5px solid #cbd5e1;
+}
+
+.small-card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px; }
+.small-date { font-size: 0.8rem; color: var(--text-muted); }
+
+/* =========================================
+   5. PORTAFOLIO (MÚLTIPLES CARRUSELES)
+   ========================================= */
+.projects-container {
+    display: flex;
+    flex-direction: column;
+    gap: 3.5rem;
+}
+
+.project-item {
+    background: var(--white);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    border: 1px solid var(--accent);
+}
+
+.project-item .swiper {
+    width: 100%;
+    height: 380px;
+}
+
+.project-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.project-info-card {
+    padding: 1.8rem;
+    border-top: 1px solid #f1f5f9;
+}
+
+.project-info-card h3 { margin: 0 0 10px 0; color: var(--dark); font-size: 1.3rem; }
+.project-info-card p { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 1.5rem; }
+
+/* Swiper Controls Customization */
+:root {
+    --swiper-theme-color: var(--primary);
+    --swiper-navigation-size: 20px;
+}
+
+.swiper-button-next, .swiper-button-prev {
+    background: rgba(255, 255, 255, 0.8);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* =========================================
+   6. SKILLS Y EDUCACIÓN
+   ========================================= */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.skill-category {
+    background: var(--white);
+    padding: 1.5rem;
+    border-radius: 12px;
+    border-top: 4px solid var(--primary);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.skill-category h3 { margin: 0 0 10px 0; font-size: 1.1rem; }
+
+.tags { display: flex; gap: 8px; flex-wrap: wrap; }
+.tags span {
+    background: var(--primary-light);
+    color: var(--primary);
+    font-size: 0.75rem;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-weight: 600;
+}
+
+/* Línea de tiempo Educación */
+.edu-item {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.edu-dot {
+    width: 12px;
+    height: 12px;
+    background: var(--primary);
+    border-radius: 50%;
+    margin-top: 8px;
+    flex-shrink: 0;
+    box-shadow: 0 0 0 4px var(--primary-light);
+}
+
+.edu-content h3 { margin: 0; font-size: 1.1rem; }
+.edu-date { font-size: 0.85rem; color: var(--primary); font-weight: 700; }
+
+/* =========================================
+   7. FOOTER Y RESPONSIVO
+   ========================================= */
+footer {
+    text-align: center;
+    padding: 4rem 0;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    border-top: 1px solid var(--accent);
+}
+
+@media (max-width: 650px) {
+    header h1 { font-size: 2.1rem; }
+    .exp-details { padding-left: 1.5rem; }
+    .summary-content { gap: 0.8rem; }
+    .project-item .swiper { height: 260px; }
+    .contact-icons { gap: 1.2rem; }
+}
+
+.project-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Esto hace que el video llene el contenedor como una imagen */
+    display: block;
+}
