@@ -2,13 +2,15 @@
    1. VARIABLES Y CONFIGURACIÓN BASE
    ========================================= */
 :root {
-    --primary: #2563eb;    /* Azul Institucional */
-    --primary-light: #e0f2fe;
-    --dark: #0f172a;       /* Fondo Header/Texto fuerte */
-    --light: #f8fafc;      /* Fondo General */
-    --text: #334155;       /* Texto Cuerpo */
-    --text-muted: #64748b; /* Texto Secundario */
-    --accent: #e2e8f0;     /* Bordes y Líneas */
+    --primary: #2563eb;       /* Azul Principal */
+    --primary-light: #e0f2fe; /* Celeste Suave Tags */
+    --blue-bg: #f0f9ff;      /* Fondo Tarjetas Adaptación */
+    --blue-border: #38bdf8;  /* Borde Tarjetas Adaptación */
+    --dark: #0f172a;
+    --light: #f8fafc;
+    --text: #334155;
+    --text-muted: #64748b;
+    --accent: #e2e8f0;
     --white: #ffffff;
     
     /* Colores de Marca */
@@ -38,7 +40,7 @@ body {
 }
 
 /* =========================================
-   2. HEADER Y CONTACTO (ICONOS)
+   2. HEADER Y CONTACTO
    ========================================= */
 header {
     background: var(--dark);
@@ -59,7 +61,6 @@ header h1 {
     color: #94a3b8; 
     font-size: 1.1rem; 
     margin-top: 10px; 
-    font-weight: 400;
 }
 
 .contact-icons {
@@ -76,20 +77,15 @@ header h1 {
     transition: all 0.3s ease;
 }
 
-.contact-icons a:hover {
-    transform: translateY(-4px);
-}
-
+.contact-icons a:hover { transform: translateY(-4px); }
 .contact-icons a:hover .fa-envelope { color: var(--c-gmail); }
 .contact-icons a:hover .fa-linkedin { color: var(--c-linkedin); }
 .contact-icons a:hover .fa-github { color: var(--c-github); }
 
 /* =========================================
-   3. SECCIONES GENERALES
+   3. SECCIONES Y TÍTULOS
    ========================================= */
-section {
-    margin-bottom: 4rem;
-}
+section { margin-bottom: 4rem; }
 
 h2 {
     border-bottom: 3px solid var(--primary);
@@ -101,7 +97,7 @@ h2 {
 }
 
 /* =========================================
-   4. EXPERIENCIA (TARJETAS DESPLEGABLES)
+   4. EXPERIENCIA (DESPLEGABLES)
    ========================================= */
 .exp-card {
     background: var(--white);
@@ -142,7 +138,7 @@ summary::-webkit-details-marker { display: none; }
 .location { font-size: 0.85rem; color: var(--text-muted); }
 
 .exp-details {
-    padding: 0 1.5rem 1.5rem 6.2rem; /* Alineado con el inicio del texto del summary */
+    padding: 0 1.5rem 1.5rem 6.2rem;
     border-top: 1px solid #f1f5f9;
     padding-top: 1rem;
 }
@@ -158,29 +154,37 @@ summary::-webkit-details-marker { display: none; }
 
 details[open] .icon-arrow { transform: rotate(180deg); color: var(--primary); }
 
-/* Experiencia Complementaria */
+/* =========================================
+   5. OTRAS HABILIDADES (CELSTE UNIFICADO)
+   ========================================= */
 .other-experience {
     margin-top: 3rem;
     padding: 2rem;
-    background: #f1f5f9;
+    background: #f1f5f9; /* Gris suave contenedor */
     border-radius: 15px;
 }
 
-.other-experience h3 { margin: 0 0 15px 0; color: var(--text); font-size: 1.2rem; }
+.other-experience h3 { margin: 0 0 15px 0; font-size: 1.2rem; }
 
-.small-card {
-    background: var(--white);
+.blue-card {
+    background: var(--blue-bg) !important;
+    border-left: 5px solid var(--blue-border) !important;
+    border-radius: 8px;
     padding: 1.2rem;
     margin-bottom: 1rem;
-    border-radius: 10px;
-    border-left: 5px solid #cbd5e1;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.03);
+    transition: transform 0.2s ease;
 }
 
+.blue-card:hover { transform: translateX(5px); }
+
 .small-card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px; }
+.blue-card strong { color: #0369a1; }
 .small-date { font-size: 0.8rem; color: var(--text-muted); }
+.blue-card p { margin: 0; font-size: 0.9rem; }
 
 /* =========================================
-   5. PORTAFOLIO (MÚLTIPLES CARRUSELES)
+   6. PORTAFOLIO Y VIDEO
    ========================================= */
 .projects-container {
     display: flex;
@@ -196,73 +200,95 @@ details[open] .icon-arrow { transform: rotate(180deg); color: var(--primary); }
     border: 1px solid var(--accent);
 }
 
-.project-item .swiper {
-    width: 100%;
-    height: 380px;
-}
+.project-item .swiper { width: 100%; height: 380px; }
 
-.project-item img {
+.project-item img, .project-video {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    display: block;
 }
 
-.project-info-card {
-    padding: 1.8rem;
-    border-top: 1px solid #f1f5f9;
-}
+.project-info-card { padding: 1.8rem; border-top: 1px solid #f1f5f9; }
+.project-info-card h3 { margin: 0 0 10px 0; font-size: 1.3rem; }
 
-.project-info-card h3 { margin: 0 0 10px 0; color: var(--dark); font-size: 1.3rem; }
-.project-info-card p { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 1.5rem; }
-
-/* Swiper Controls Customization */
-:root {
-    --swiper-theme-color: var(--primary);
-    --swiper-navigation-size: 20px;
-}
-
+/* Swiper Controls */
+:root { --swiper-navigation-size: 20px; }
 .swiper-button-next, .swiper-button-prev {
     background: rgba(255, 255, 255, 0.8);
-    width: 40px;
-    height: 40px;
+    width: 40px; height: 40px;
     border-radius: 50%;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
 /* =========================================
-   6. SKILLS Y EDUCACIÓN
+   7. SKILLS (DISEÑO DINÁMICO)
    ========================================= */
 .skills-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem; /* Aumentamos el espacio para que respiren */
 }
 
 .skill-category {
     background: var(--white);
-    padding: 1.5rem;
-    border-radius: 12px;
-    border-top: 4px solid var(--primary);
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    padding: 2rem;
+    border-radius: 16px; /* Bordes más suaves */
+    border-top: 6px solid var(--primary); /* Línea superior más gruesa */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease; /* Para que el efecto hover sea suave */
+    display: flex;
+    flex-direction: column;
 }
 
-.skill-category h3 { margin: 0 0 10px 0; font-size: 1.1rem; }
+/* EFECTO HOVER: La tarjeta sube sutilmente y la sombra crece */
+.skill-category:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+    border-top-color: var(--blue-border); /* Cambia el color del borde al pasar el mouse */
+}
 
-.tags { display: flex; gap: 8px; flex-wrap: wrap; }
+.skill-category h3 {
+    margin: 0 0 15px 0;
+    font-size: 1.3rem;
+    color: var(--dark);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Estilo mejorado para las etiquetas (Tags) */
+.tags {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: auto; /* Empuja los tags al fondo si las tarjetas tienen distinto alto */
+}
+
 .tags span {
     background: var(--primary-light);
     color: var(--primary);
-    font-size: 0.75rem;
-    padding: 4px 12px;
-    border-radius: 20px;
+    font-size: 0.8rem;
+    padding: 6px 14px;
+    border-radius: 12px;
     font-weight: 600;
+    border: 1px solid transparent;
+    transition: all 0.2s ease;
 }
 
-/* Línea de tiempo Educación */
+/* Los tags también reaccionan */
+.tags span:hover {
+    background: var(--primary);
+    color: var(--white);
+    transform: scale(1.05);
+}
+/* --- AJUSTE DE ALINEACIÓN EN EDUCACIÓN --- */
+
 .edu-item {
     display: flex;
     gap: 1.5rem;
-    margin-bottom: 2rem;
+    margin-bottom: 2.5rem;
+    align-items: flex-start; /* Alinea el punto con el inicio del texto */
 }
 
 .edu-dot {
@@ -270,36 +296,133 @@ details[open] .icon-arrow { transform: rotate(180deg); color: var(--primary); }
     height: 12px;
     background: var(--primary);
     border-radius: 50%;
-    margin-top: 8px;
+    /* Este margin-top es el truco: 
+       centra el punto visualmente con la primera línea del h3 */
+    margin-top: 8px; 
     flex-shrink: 0;
     box-shadow: 0 0 0 4px var(--primary-light);
 }
 
-.edu-content h3 { margin: 0; font-size: 1.1rem; }
-.edu-date { font-size: 0.85rem; color: var(--primary); font-weight: 700; }
+.edu-content h3 {
+    margin: 0; /* Quitamos el margen para que no empuje el texto hacia abajo */
+    font-size: 1.2rem;
+    color: var(--dark);
+    line-height: 1.2; /* Controlamos la altura de línea para la alineación */
+}
+
+.edu-content p {
+    margin: 5px 0;
+    font-size: 1rem;
+    color: var(--text-muted);
+}
+
+.edu-date {
+    font-size: 0.85rem;
+    color: var(--primary);
+    font-weight: 700;
+}
 
 /* =========================================
-   7. FOOTER Y RESPONSIVO
+   8. FOOTER ATRACTIVO Y MODERNO
    ========================================= */
-footer {
-    text-align: center;
-    padding: 4rem 0;
-    color: var(--text-muted);
-    font-size: 0.85rem;
-    border-top: 1px solid var(--accent);
+.main-footer {
+    background: var(--dark);
+    color: #94a3b8;
+    padding: 4rem 0 2rem 0;
+    margin-top: 5rem;
+    border-top: 4px solid var(--primary);
 }
 
-@media (max-width: 650px) {
-    header h1 { font-size: 2.1rem; }
-    .exp-details { padding-left: 1.5rem; }
-    .summary-content { gap: 0.8rem; }
-    .project-item .swiper { height: 260px; }
-    .contact-icons { gap: 1.2rem; }
+.footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 3rem;
+    padding-bottom: 3rem;
 }
 
-.project-video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Esto hace que el video llene el contenedor como una imagen */
+.footer-logo {
     display: block;
+    color: var(--white);
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.footer-brand p {
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.footer-links h4, .footer-tech h4 {
+    color: var(--white);
+    font-size: 1rem;
+    margin-bottom: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.footer-links ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-links li { margin-bottom: 0.8rem; }
+
+.footer-links a {
+    color: #94a3b8;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s;
+}
+
+.footer-links a:hover {
+    color: var(--primary);
+}
+/* Estilo para el enlace de la marca en el footer */
+.footer-brand-link {
+    color: var(--white); /* Se mantiene blanco como el texto original */
+    text-decoration: none; /* Quitamos el subrayado feo */
+    font-weight: 700;
+    transition: all 0.3s ease;
+    padding: 2px 5px;
+    border-radius: 4px;
+}
+
+.footer-brand-link:hover {
+    color: var(--primary); /* Cambia al azul de tu marca al pasar el mouse */
+    background: rgba(255, 255, 255, 0.05); /* Un fondo muy sutil para que se note que es clicable */
+    text-decoration: underline;
+}
+
+.tech-icons-mini {
+    display: flex;
+    gap: 1.2rem;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.tech-icons-mini i:hover {
+    color: var(--white);
+    transform: scale(1.1);
+    transition: all 0.3s;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 2rem;
+    border-top: 1px solid #1e293b;
+    font-size: 0.8rem;
+}
+
+.heart { color: #ef4444; }
+
+/* Ajuste para móviles */
+@media (max-width: 768px) {
+    .footer-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 2rem;
+    }
+    .tech-icons-mini { justify-content: center; }
 }
