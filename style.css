@@ -1,5 +1,5 @@
 /* =========================================
-   1. VARIABLES Y CONFIGURACIÓN BASE (Light & Dark)
+   1. VARIABLES Y CONFIGURACIÓN BASE
    ========================================= */
 :root {
     /* Tema Claro (Por Defecto) */
@@ -17,7 +17,11 @@
     
     --c-gmail: #ea4335;
     --c-linkedin: #0077b5;
-    --c-github: #181717;
+    --c-github: #ffffff;
+    
+    /* Variables de Swiper Actualizadas */
+    --swiper-navigation-size: 20px;
+    --swiper-theme-color: #2563eb;
 }
 
 /* Variables del Modo Oscuro */
@@ -33,8 +37,6 @@
     --accent: #1e293b;      
     --white: #1e293b;       
     --card-shadow: rgba(0, 0, 0, 0.3);
-    
-    --c-github: #ffffff;
 }
 
 * {
@@ -55,64 +57,23 @@ body {
 .container { max-width: 850px; margin: 0 auto; padding: 0 1.5rem; }
 
 /* =========================================
-   2. BOTÓN FLOTANTE DE MODO OSCURO
+   2. BOTÓN FLOTANTE MODO OSCURO
    ========================================= */
 .theme-btn-floating {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    background-color: var(--white);
-    border: 2px solid var(--accent);
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    box-shadow: 0 4px 10px var(--card-shadow);
-    z-index: 1000;
-    transition: all 0.3s ease, background-color 0.4s ease, border-color 0.4s ease;
+    position: fixed; top: 20px; right: 20px; background-color: var(--white); border: 2px solid var(--accent); border-radius: 50%; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 4px 10px var(--card-shadow); z-index: 1000; transition: all 0.3s ease, background-color 0.4s ease, border-color 0.4s ease;
 }
-
-.theme-btn-floating i {
-    font-size: 1.5rem;
-    color: var(--text);
-    transition: color 0.4s ease, transform 0.3s ease;
-}
-
-.theme-btn-floating:hover {
-    transform: scale(1.1);
-    border-color: var(--primary);
-}
-
-.theme-btn-floating:hover i {
-    color: #fbbf24;
-    transform: rotate(15deg);
-}
+.theme-btn-floating i { font-size: 1.5rem; color: var(--text); transition: color 0.4s ease, transform 0.3s ease; }
+.theme-btn-floating:hover { transform: scale(1.1); border-color: var(--primary); }
+.theme-btn-floating:hover i { color: #fbbf24; transform: rotate(15deg); }
 
 /* =========================================
    3. HEADER Y CONTACTO
    ========================================= */
-header {
-    background: #0f172a; 
-    color: #ffffff;
-    text-align: center;
-    padding: 4rem 1rem;
-    margin-bottom: 2rem;
-}
-
+header { background: #0f172a; color: #ffffff; text-align: center; padding: 4rem 1rem; margin-bottom: 2rem; }
 header h1 { margin: 0; font-size: 2.8rem; font-weight: 700; letter-spacing: -1px; }
 .subtitle { color: #94a3b8; font-size: 1.1rem; margin-top: 10px; min-height: 1.6rem; }
-
-.contact-icons {
-    margin-top: 2rem; display: flex; justify-content: center; gap: 2rem; align-items: center;
-}
-
-.contact-icons a {
-    color: #94a3b8; font-size: 2rem; text-decoration: none; transition: all 0.3s ease;
-}
-
+.contact-icons { margin-top: 2rem; display: flex; justify-content: center; gap: 2rem; align-items: center; }
+.contact-icons a { color: #94a3b8; font-size: 2rem; text-decoration: none; transition: all 0.3s ease; }
 .contact-icons a:hover { transform: translateY(-4px); }
 .contact-icons a:hover .fa-envelope { color: var(--c-gmail); }
 .contact-icons a:hover .fa-linkedin { color: var(--c-linkedin); }
@@ -122,21 +83,12 @@ header h1 { margin: 0; font-size: 2.8rem; font-weight: 700; letter-spacing: -1px
    4. SECCIONES Y TÍTULOS
    ========================================= */
 section { margin-bottom: 4rem; }
-h2 {
-    border-bottom: 3px solid var(--primary);
-    display: inline-block;
-    padding-bottom: 5px; margin-bottom: 1.5rem; color: var(--dark); font-size: 1.6rem;
-    transition: color 0.4s ease;
-}
+h2 { border-bottom: 3px solid var(--primary); display: inline-block; padding-bottom: 5px; margin-bottom: 1.5rem; color: var(--dark); font-size: 1.6rem; transition: color 0.4s ease; }
 
 /* =========================================
    5. TERMINAL INTERACTIVA
    ========================================= */
-.terminal-window {
-    background: #1e1e1e; border-radius: 8px; box-shadow: 0 10px 30px var(--card-shadow);
-    font-family: 'Fira Code', 'Courier New', monospace; overflow: hidden;
-    margin-bottom: 3rem; border: 1px solid var(--accent);
-}
+.terminal-window { background: #1e1e1e; border-radius: 8px; box-shadow: 0 10px 30px var(--card-shadow); font-family: 'Fira Code', 'Courier New', monospace; overflow: hidden; margin-bottom: 3rem; border: 1px solid var(--accent); }
 .terminal-header { background: #333; padding: 10px 15px; display: flex; align-items: center; }
 .btns { display: flex; gap: 6px; }
 .dot { width: 12px; height: 12px; border-radius: 50%; }
@@ -151,11 +103,7 @@ h2 {
 /* =========================================
    6. EXPERIENCIA (DESPLEGABLES)
    ========================================= */
-.exp-card {
-    background: var(--white); border-radius: 12px; margin-bottom: 1.2rem;
-    box-shadow: 0 4px 6px -1px var(--card-shadow); border: 1px solid var(--accent);
-    overflow: hidden; transition: all 0.3s ease;
-}
+.exp-card { background: var(--white); border-radius: 12px; margin-bottom: 1.2rem; box-shadow: 0 4px 6px -1px var(--card-shadow); border: 1px solid var(--accent); overflow: hidden; transition: all 0.3s ease; }
 .exp-card:hover { border-color: var(--primary); }
 summary { list-style: none; cursor: pointer; padding: 1.5rem; }
 summary::-webkit-details-marker { display: none; }
@@ -167,8 +115,6 @@ summary::-webkit-details-marker { display: none; }
 .date { font-weight: 700; color: var(--primary); font-size: 0.9rem; display: block; margin-bottom: 8px; }
 .icon-arrow { transition: transform 0.3s ease; font-size: 0.8rem; color: var(--text-muted); margin-left: auto; }
 details[open] .icon-arrow { transform: rotate(180deg); color: var(--primary); }
-
-/* Otras Habilidades */
 .other-experience { margin-top: 3rem; padding: 2rem; background: var(--white); border-radius: 15px; border: 1px solid var(--accent); }
 .other-experience h3 { margin: 0 0 15px 0; font-size: 1.2rem; color: var(--dark); }
 .blue-card { background: var(--blue-bg) !important; border-left: 5px solid var(--blue-border) !important; border-radius: 8px; padding: 1.2rem; margin-bottom: 1rem; box-shadow: 0 2px 4px var(--card-shadow); transition: transform 0.2s ease; color: var(--text); }
@@ -179,23 +125,34 @@ details[open] .icon-arrow { transform: rotate(180deg); color: var(--primary); }
 .blue-card p { margin: 0; font-size: 0.9rem; }
 
 /* =========================================
-   7. PORTAFOLIO, VIDEO Y BROWSER MOCKUP
+   7. PORTAFOLIO Y BROWSER MOCKUP
    ========================================= */
 .projects-container { display: flex; flex-direction: column; gap: 3.5rem; }
 .project-item { background: var(--white); border-radius: 15px; overflow: hidden; box-shadow: 0 10px 20px var(--card-shadow); border: 1px solid var(--accent); transition: background-color 0.4s ease; }
-.project-item .swiper { width: 100%; height: 380px; }
-.project-item img, .project-video { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+/* CORRECCIÓN #1: Quitar la altura fija de 380px de Swiper. Dejar que crezca automáticamente */
+.project-item .swiper { 
+    width: 100%; 
+    height: auto; /* Dinámico */
+}
+
+/* CORRECCIÓN #2: Mejorar la visualización de imágenes verticales */
+.project-item img, .project-video { 
+    width: 100%; 
+    height: auto; /* Mantener proporción */
+    display: block; 
+    object-fit: contain; /* Encajar sin cortar */
+    /* Quitamos el color de fondo para que no se vean barras grises */
+    background-color: transparent; 
+}
+
 .project-info-card { padding: 1.8rem; border-top: 1px solid var(--accent); }
 .project-info-card h3 { margin: 0 0 10px 0; font-size: 1.3rem; color: var(--dark); }
-
-/* Estilo del "Navegador" para proyectos web */
 .browser-mockup { border-bottom: 1px solid var(--accent); background: var(--white); border-radius: 15px 15px 0 0; overflow: hidden; }
 .browser-header { background: #e2e8f0; padding: 8px 15px; display: flex; align-items: center; transition: background-color 0.4s ease; }
 [data-theme="dark"] .browser-header { background: #1e293b; }
 .browser-url { background: #ffffff; border-radius: 12px; padding: 3px 15px; font-size: 0.75rem; color: #64748b; margin-left: 15px; flex-grow: 1; text-align: center; font-family: 'Inter', sans-serif; transition: background-color 0.4s ease, color 0.4s ease; }
 [data-theme="dark"] .browser-url { background: #0f172a; color: #94a3b8; }
-
-/* Botones de Acción en Proyectos */
 .project-links { margin-top: 1.5rem; display: flex; gap: 12px; flex-wrap: wrap; }
 .btn-primary, .btn-outline { padding: 8px 18px; border-radius: 6px; text-decoration: none; font-size: 0.85rem; font-weight: 600; transition: all 0.3s ease; display: flex; align-items: center; gap: 6px; }
 .btn-primary { background: var(--primary); color: #ffffff !important; border: 1px solid var(--primary); }
@@ -204,6 +161,38 @@ details[open] .icon-arrow { transform: rotate(180deg); color: var(--primary); }
 .btn-outline:hover { background: var(--primary-light); transform: translateY(-2px); }
 [data-theme="dark"] .btn-outline:hover { background: rgba(37, 99, 235, 0.1); }
 
+/* Estilo neutral para SwiperBullets (Puntos) */
+.swiper-pagination-bullet { 
+    background: var(--text-muted); 
+    opacity: 0.5; 
+}
+.swiper-pagination-bullet-active { 
+    background: var(--primary); 
+    opacity: 1; 
+}
+
+/* Flechas Swiper para escritorio: elegantes, oscuras y con flecha blanca */
+.swiper-button-next, .swiper-button-prev { 
+    background-color: rgba(15, 23, 42, 0.6) !important; /* Fondo oscuro semi-transparente */
+    color: #ffffff !important; /* Flecha blanca pura */
+    width: 44px !important;
+    height: 44px !important;
+    border-radius: 50%; 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); 
+    transition: all 0.3s ease !important;
+}
+
+/* Ajustar el tamaño del ícono de la flecha para que se vea más fino y moderno */
+.swiper-button-next::after, .swiper-button-prev::after {
+    font-size: 1.2rem !important;
+    font-weight: bold;
+}
+
+/* Efecto Hover: se ilumina con tu color principal y crece un poco */
+.swiper-button-next:hover, .swiper-button-prev:hover {
+    background-color: var(--primary) !important;
+    transform: scale(1.1);
+}
 /* =========================================
    8. SKILLS, GRÁFICO Y BUSCADOR
    ========================================= */
@@ -212,10 +201,7 @@ details[open] .icon-arrow { transform: rotate(180deg); color: var(--primary); }
 .search-container:focus-within { border-color: var(--primary); }
 .search-container i { color: var(--text-muted); }
 #skillInput { background: transparent; border: none; outline: none; font-size: 0.95rem; width: 200px; color: var(--text); }
-
-/* Contenedor del Gráfico */
 .chart-wrapper { position: relative; height: 350px; width: 100%; max-width: 550px; margin: 0 auto 3rem auto; }
-
 .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
 .skill-category { background: var(--white); padding: 2rem; border-radius: 16px; border-top: 6px solid var(--primary); box-shadow: 0 4px 15px var(--card-shadow); transition: all 0.3s ease; display: flex; flex-direction: column; }
 .skill-category:hover { transform: translateY(-8px); box-shadow: 0 12px 24px var(--card-shadow); border-top-color: var(--blue-border); }
@@ -225,17 +211,13 @@ details[open] .icon-arrow { transform: rotate(180deg); color: var(--primary); }
 .tags span:hover { background: var(--primary); color: #fff; transform: scale(1.05); }
 
 /* =========================================
-   9. EDUCACIÓN
+   9. EDUCACIÓN Y FOOTER
    ========================================= */
 .edu-item { display: flex; gap: 1.5rem; margin-bottom: 2.5rem; align-items: flex-start; }
 .edu-dot { width: 12px; height: 12px; background: var(--primary); border-radius: 50%; margin-top: 8px; flex-shrink: 0; box-shadow: 0 0 0 4px var(--primary-light); }
 .edu-content h3 { margin: 0; font-size: 1.2rem; color: var(--dark); line-height: 1.2; }
 .edu-content p { margin: 5px 0; font-size: 1rem; color: var(--text-muted); }
 .edu-date { font-size: 0.85rem; color: var(--primary); font-weight: 700; }
-
-/* =========================================
-   10. FOOTER Y RESPONSIVE
-   ========================================= */
 .main-footer { background: #0f172a; color: #94a3b8; padding: 4rem 0 2rem 0; margin-top: 5rem; border-top: 4px solid var(--primary); }
 .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3rem; padding-bottom: 3rem; }
 .footer-logo { display: block; color: #fff; font-size: 1.4rem; font-weight: 700; margin-bottom: 1rem; }
@@ -251,7 +233,36 @@ details[open] .icon-arrow { transform: rotate(180deg); color: var(--primary); }
 .tech-icons-mini i:hover { color: #fff; transform: scale(1.1); transition: all 0.3s; }
 .footer-bottom { text-align: center; padding-top: 2rem; border-top: 1px solid #1e293b; font-size: 0.8rem; }
 
-@media (max-width: 768px) { 
-    .footer-grid { grid-template-columns: 1fr; text-align: center; gap: 2rem; } 
+/* =========================================
+   10. CORRECCIONES PARA DISPOSITIVOS MÓVILES (NUEVO)
+   ========================================= */
+@media (max-width: 768px) {
+    /* Ajustes generales responsivos */
+    .container { padding: 0 1rem; }
+    header { padding: 3rem 1rem; }
+    header h1 { font-size: 2.2rem; }
+    .subtitle { font-size: 0.95rem; line-height: 1.4; }
+    .contact-icons { gap: 1.5rem; margin-top: 1.5rem; }
+
+    /* CORRECCIÓN #3 (MÓVIL): Ocultar flechas del carrusel */
+    /* El usuario usará el dedo ("swipe"), las flechas solo tapan contenido */
+    .swiper-button-next, .swiper-button-prev { 
+        display: none !important; 
+    }
+
+    /* Paginación (bullets) neutral en móvil */
+    .swiper-pagination-bullet { background: #888; opacity: 0.7; }
+    .swiper-pagination-bullet-active { background: #2563eb; opacity: 1; }
+
+    /* Ajustes para tarjetas de proyectos */
+    .projects-container { gap: 2.5rem; }
+    .project-info-card { padding: 1.2rem; }
+    .project-info-card h3 { font-size: 1.1rem; }
+    .project-links { gap: 10px; }
+    .btn-primary, .btn-outline { font-size: 0.8rem; padding: 6px 12px; }
+    
+    /* Grids a 1 columna */
+    .skills-grid { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr; text-align: center; gap: 2rem; }
     .tech-icons-mini, .section-header-skills { justify-content: center; } 
 }

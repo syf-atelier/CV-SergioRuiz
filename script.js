@@ -1,6 +1,6 @@
 /**
  * Sergio Ruiz Torres - CV Profesional e Interactivo
- * Módulos: Modo Oscuro, Gráfico de Radar, Terminal, Filtros y Carruseles
+ * Módulos: Modo Oscuro, Gráfico de Radar, Terminal, Filtros, Carruseles y UX Móvil
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
             themeIcon.classList.replace('fa-moon', 'fa-sun');
         }
         
-        // Actualizar el color de los textos del gráfico si es necesario
+        // Actualizar el gráfico si existe
         if(window.skillsRadarChart) {
             window.skillsRadarChart.update();
         }
@@ -37,23 +37,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     /* =========================================
-       2. EFECTO TYPING EN EL HEADER (Corregido)
+       2. EFECTO TYPING EN EL HEADER (Fijado &amp;)
        ========================================= */
     const titleElement = document.querySelector('.typing-text');
     if (titleElement) {
-        const textToType = titleElement.textContent; // Usamos textContent para evitar el &amp;
-        titleElement.textContent = ''; 
+        // CORRECCIÓN: Leemos textContent (texto puro) para que el símbolo '&' no se transforme en '&amp;'
+        const textToType = titleElement.textContent.trim(); 
+        titleElement.textContent = ''; // Limpiamos para iniciar animación
         let charIndex = 0;
 
         function typeWriter() {
             if (charIndex < textToType.length) {
+                // Forzamos texto puro para asegurar que el símbolo '&' se imprima bien
                 titleElement.textContent += textToType.charAt(charIndex);
                 charIndex++;
                 setTimeout(typeWriter, 40); // Velocidad de escritura
             }
         }
-        // Iniciar con un pequeño retraso
-        setTimeout(typeWriter, 500);
+        // Iniciar con un pequeño retraso para asegurar que la página cargó
+        setTimeout(typeWriter, 300);
     }
 
 
@@ -66,16 +68,15 @@ document.addEventListener('DOMContentLoaded', () => {
             type: 'radar',
             data: {
                 labels: [
-                    'Arquitectura de Datos (ETL/ELT)', 
-                    'Sistemas y BD (SQL/ClickHouse)', 
+                    'Arquitectura de Datos (ETL)', 
+                    'Sistemas y BD (SQL)', 
                     'Software Dev (Python/JS)', 
                     'Automatización e IoT', 
                     'Manufactura Digital (CNC)', 
-                    'Data Viz (Streamlit/PBI)'
+                    'Data Viz (Power BI)'
                 ],
                 datasets: [{
                     label: 'Nivel Técnico',
-                    // Valores sugeridos (0 a 100)
                     data: [80, 85, 95, 90, 85, 75], 
                     backgroundColor: 'rgba(37, 99, 235, 0.2)',
                     borderColor: '#2563eb',
@@ -96,6 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         pointLabels: {
                             font: { 
                                 family: 'Inter', 
+                                // Ajuste de fuente dinámico para labels del gráfico
                                 size: window.innerWidth < 600 ? 10 : 12, 
                                 weight: '600' 
                             },
@@ -119,6 +121,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+
     /* =========================================
        4. INICIALIZACIÓN DE CARRUSELES (Swiper.js)
        ========================================= */
@@ -128,7 +131,11 @@ document.addEventListener('DOMContentLoaded', () => {
         new Swiper(element, {
             loop: true,
             grabCursor: true,
-            spaceBetween: 15,
+            spaceBetween: 10, // Espacio entre slides
+            
+            // CORRECCIÓN #4: autoHeight es clave. 
+            // La tarjeta crecerá o encogerá dinámicamente según la altura de la imagen actual.
+            autoHeight: true, 
             
             pagination: {
                 el: element.querySelector('.swiper-pagination'),
